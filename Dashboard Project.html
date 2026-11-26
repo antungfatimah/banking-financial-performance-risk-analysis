@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apakah ketahanan perbankan Indonesia sudah pulih?</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{--bg:#eef0f4;--tile:#fff;--tx:#14213d;--mut:#5a6577;--line:#dde1e8;--nav:#0f1f4d;--c1:#1d6fe0;--c2:#e66c37;--c3:#12239e;--bad:#d64550;--y:#f2b705;--yb:#fffbe6;--cov:rgba(90,101,119,.13);--band:rgba(29,111,224,.10);--sh:0 1px 3px rgba(15,31,77,.12);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1424;--tile:#16203a;--tx:#e8ecf5;--mut:#9aa6bd;--line:#28345a;--nav:#0a1330;--c1:#5aa2ff;--c2:#f59a5b;--c3:#9fb0ff;--bad:#ff7b84;--y:#f5c542;--yb:rgba(245,197,66,.08);--cov:rgba(200,208,225,.12);--band:rgba(90,162,255,.14);--sh:none;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1424;--tile:#16203a;--tx:#e8ecf5;--mut:#9aa6bd;--line:#28345a;--nav:#0a1330;--c1:#5aa2ff;--c2:#f59a5b;--c3:#9fb0ff;--bad:#ff7b84;--y:#f5c542;--yb:rgba(245,197,66,.08);--cov:rgba(200,208,225,.12);--band:rgba(90,162,255,.14);--sh:none;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.45 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+.app{display:flex;min-height:100vh}
+aside{background:var(--nav);color:#fff;width:200px;flex:none;padding:18px 12px;position:sticky;top:0;align-self:flex-start;min-height:100vh}
+aside .lg{display:flex;gap:8px;align-items:center;font-weight:600;font-size:14px;line-height:1.2;margin-bottom:20px}
+aside .lg small{display:block;font-weight:400;font-size:11px;color:#b8c2e0}
+aside a{display:block;color:#d7def5;text-decoration:none;padding:8px 10px;border-radius:6px;font-size:13px}
+aside a.on,aside a:hover{background:rgba(255,255,255,.12);color:#fff}
+.main{flex:1;min-width:0;padding:16px}
+.q{display:flex;gap:12px;align-items:flex-start;margin-bottom:6px}
+.bd{flex:none;width:26px;height:26px;border-radius:50%;background:var(--y);color:#14213d;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+h1{font-size:21px;line-height:1.3;margin:0}
+h1 mark{background:none;color:inherit;border:2px solid var(--y);border-radius:6px;padding:0 6px}
+.ans{margin:8px 0 14px 38px;color:var(--mut);font-size:13px}
+.ans b{color:var(--tx)}
+.kp{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.t{background:var(--tile);border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh);padding:10px 12px;min-width:0}
+.t h2{font-size:13px;font-weight:600;margin:0 0 6px}
+.k b{display:block;font-size:12px;font-weight:400;color:var(--mut)}
+.k .v{font-size:28px;font-weight:600;line-height:1.2}
+.k small{display:block;font-size:11px;color:var(--mut)}
+.body{display:grid;gap:12px;grid-template-columns:1fr}
+.ch{position:relative;height:220px}
+.cg{display:grid;gap:12px;grid-template-columns:1fr;align-content:start}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:12px;min-width:340px}
+th{background:var(--bg);font-weight:600}
+th,td{padding:6px 8px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+.box{border:2px solid var(--y);background:var(--yb);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.box h2{display:flex;gap:8px;align-items:center;font-size:14px;margin:0 0 8px}
+.box ul{margin:0;padding:0;list-style:none}
+.box li{margin-bottom:9px;font-size:13px}
+.box li b{display:block}
+.box p{margin:0 0 8px;font-size:12px;color:var(--mut)}
+.n{font-size:12px;color:var(--mut);margin:0}
+.ft{margin-top:12px}
+@media (max-width:899px){.app{display:block}aside{width:auto;min-height:0;position:static;padding:10px 12px;display:flex;gap:6px;overflow-x:auto;align-items:center}aside .lg{margin:0 8px 0 0;white-space:nowrap}aside .lg small{display:none}aside a{white-space:nowrap}}
+@media (min-width:900px){.kp{grid-template-columns:repeat(4,1fr)}.main{padding:20px 24px}.body{grid-template-columns:minmax(0,1fr) 330px}.cg{grid-template-columns:1fr 1fr}.w2{grid-column:1/-1}}
+section{scroll-margin-top:12px}
+</style></head><body><div class="app">
+<aside><div class="lg"><svg width="22" height="26" viewBox="0 0 26 30" aria-hidden="true"><rect x="0" y="12" width="7" height="18" rx="1" fill="#f2c80f"/><rect x="9.5" y="5" width="7" height="25" rx="1" fill="#f2c80f"/><rect x="19" y="0" width="7" height="30" rx="1" fill="#f2c80f"/></svg><div>Perbankan Indonesia<small>Data Analysis</small></div></div>
+<a class="on" href="#ringkasan">Ringkasan</a><a href="#npl">Kredit bermasalah</a><a href="#modal">Modal dan likuiditas</a><a href="#insight">Insight</a><a href="#catatan">Catatan data</a></aside>
+<div class="main">
+<section id="ringkasan"><div class="q"><span class="bd">1</span><h1>Apakah ketahanan perbankan Indonesia sudah <mark>pulih setelah COVID-19</mark>?</h1></div>
+<p class="ans"><b>Jawaban singkat:</b> berdasarkan empat indikator agregat (Jan 2018–Jun 2025), ya. NPL, ROA, dan CAR periode pemulihan semuanya lebih baik daripada rata-rata sebelum COVID. Catatannya: ini data agregat industri, bukan per bank.</p>
+<div class="kp" id="kp"></div></section>
+<div class="body">
+<div class="cg">
+<section class="t" id="npl"><h2>Tren NPL gross (%) terhadap batas 5%</h2><div class="ch"><canvas id="cNpl"></canvas></div></section>
+<section class="t"><h2>Tren ROA (%)</h2><div class="ch"><canvas id="cRoa"></canvas></div></section>
+<section class="t w2" id="modal"><h2>CAR (%, kiri) dan LDR (%, kanan); area biru: kisaran LDR 84–94% (asumsi)</h2><div class="ch" style="height:250px"><canvas id="cCar"></canvas></div></section>
+<section class="t"><h2>NPL dan ROA, satu titik satu bulan</h2><div class="ch"><canvas id="cSc"></canvas></div></section>
+<section class="t"><h2>Rata-rata per periode</h2><div class="tw"><table id="reg"></table></div><p class="n" style="margin-top:8px">Pra-COVID: Jan 2018–Feb 2020. COVID: Mar 2020–Des 2021. Pemulihan: Jan 2022–Jun 2025.</p></section>
+</div>
+<div id="insight">
+<div class="box"><h2><span class="bd">2</span>Insight utama</h2><ul>
+<li><b>NPL turun 33,7% dari puncaknya.</b>3,35% (Agu 2021) menjadi 2,22% (Jun 2025), dan tidak pernah kurang dari 1,65 poin di bawah batas 5%.</li>
+<li><b>ROA sudah melewati level pra-COVID.</b>Terendah 1,59% (Des 2020); rata-rata periode pemulihan 2,59% dibanding 2,49% sebelum COVID.</li>
+<li><b>Modal tebal, LDR lebih rendah.</b>CAR 25,81% (Jun 2025) lebih dari tiga kali minimum 8%. Rata-rata CAR naik dari 23,00% ke 26,14%, rata-rata LDR turun dari 93,27% ke 83,40%.</li>
+<li><b>NPL dan ROA bukan sebab-akibat.</b>Korelasi −0,79 pada level, hanya 0,05 pada perubahan bulanan: keduanya lebih mencerminkan tren searah.</li></ul></div>
+<div class="box"><h2><span class="bd">3</span>Rekomendasi</h2><p>Usulan analisis lanjutan dari data ini, bukan kesimpulan kebijakan.</p><ul>
+<li><b>Pantau sinyal setahun terakhir.</b>Per Jun 2025, ROA turun 0,08 poin dan CAR turun 0,28 poin dibanding Jun 2024, LDR naik 0,65 poin. Selisihnya kecil; cek apakah berlanjut.</li>
+<li><b>Turunkan ke tingkat bank atau segmen.</b>Data agregat bisa menutupi bank dengan NPL tinggi. Langkah berikutnya: perbandingan antarbank.</li>
+<li><b>Uji penjelasnya.</b>Tambahkan data seperti suku bunga atau pertumbuhan kredit untuk menguji hubungan NPL–ROA. Lebih dulu lengkapi Jun–Sep 2021 dari SPI Juni 2022 dan verifikasi LDR ke sumber resmi.</li></ul></div>
+</div></div>
+<section class="t ft" id="catatan"><h2>Catatan data</h2><p class="n">Sumber rujukan: Statistik Perbankan Indonesia, OJK. ROA, CAR, LDR, dan NIM Juni–September 2021 tidak tersedia dan sengaja dibiarkan kosong (garis terputus pada grafik). Angka berdesimal enam sedangkan OJK merilis dua desimal; pada sejumlah bulan yang dicocokkan dengan siaran pers OJK hasil pembulatannya sama, tetapi itu sampel, bukan seluruh data. LDR belum diverifikasi ke sumber resmi. Kisaran LDR 84–94% adalah asumsi analisis. Area abu-abu pada grafik: Maret 2020–Desember 2021.</p></section>
+</div></div>
+<script>
+const D={"p":["2018-01","2018-02","2018-03","2018-04","2018-05","2018-06","2018-07","2018-08","2018-09","2018-10","2018-11","2018-12","2019-01","2019-02","2019-03","2019-04","2019-05","2019-06","2019-07","2019-08","2019-09","2019-10","2019-11","2019-12","2020-01","2020-02","2020-03","2020-04","2020-05","2020-06","2020-07","2020-08","2020-09","2020-10","2020-11","2020-12","2021-01","2021-02","2021-03","2021-04","2021-05","2021-06","2021-07","2021-08","2021-09","2021-10","2021-11","2021-12","2022-01","2022-02","2022-03","2022-04","2022-05","2022-06","2022-07","2022-08","2022-09","2022-10","2022-11","2022-12","2023-01","2023-02","2023-03","2023-04","2023-05","2023-06","2023-07","2023-08","2023-09","2023-10","2023-11","2023-12","2024-01","2024-02","2024-03","2024-04","2024-05","2024-06","2024-07","2024-08","2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06"],"npl":[2.864727,2.881509,2.750411,2.793894,2.790873,2.674288,2.732961,2.737352,2.657388,2.64891,2.66671,2.365747,2.556135,2.585284,2.51193,2.574312,2.612407,2.503392,2.550226,2.599432,2.65666,2.73155,2.77038,2.525095,2.765061,2.787261,2.771417,2.893146,3.002494,3.10951,3.22242,3.218751,3.144311,3.15366,3.175251,3.059482,3.166004,3.206631,3.168682,3.219174,3.346641,3.237707,3.345991,3.354285,3.217458,3.217319,3.193526,3.003691,3.098968,3.078839,2.986273,2.999728,3.043891,2.859623,2.898961,2.877333,2.78027,2.723288,2.651655,2.437522,2.594631,2.580365,2.489432,2.526634,2.521613,2.43694,2.510501,2.495961,2.43486,2.416022,2.363484,2.185778,2.345684,2.348336,2.253525,2.325388,2.336447,2.262963,2.274169,2.258956,2.205921,2.198403,2.189415,2.080119,2.181286,2.220248,2.166792,2.238144,2.288741,2.223433],"roa":[2.499203,2.362113,2.550988,2.404831,2.38113,2.425326,2.46439,2.466784,2.504326,2.524663,2.519819,2.550225,2.591523,2.45498,2.604978,2.418325,2.412291,2.508836,2.500932,2.487471,2.479577,2.478612,2.466866,2.473251,2.700438,2.486153,2.573955,2.342757,2.060138,1.944588,1.896353,1.899233,1.756191,1.697962,1.641833,1.593907,2.168296,1.970208,1.871994,1.857091,1.800513,null,null,null,null,1.916561,1.910971,1.838945,2.532756,2.336694,2.189285,2.315022,2.343055,2.36538,2.452822,2.478967,2.510896,2.472825,2.47,2.429843,3.022885,2.747282,2.768006,2.721596,2.692659,2.72563,2.739299,2.738386,2.728527,2.726438,2.7203,2.74,2.71,2.520446,2.618955,2.51,2.5581,2.660909,2.685159,2.692404,2.725883,2.728479,2.693866,2.689781,2.34125,2.408241,2.581018,2.529665,2.51497,2.580338],"car":[23.429091,23.241895,22.648025,22.254916,22.194367,22.01251,22.55801,22.833165,22.906276,22.967285,23.324556,22.972897,23.217647,23.448796,23.416985,23.20562,22.431933,22.629639,23.193563,23.928886,23.284887,23.539253,23.765127,23.403703,22.827304,22.329796,21.668614,22.080841,22.195012,22.546486,23.029327,23.495362,23.524187,23.82551,24.246038,23.893842,24.502394,24.526777,24.036487,24.207362,24.270955,null,null,null,null,25.300837,25.591855,25.665292,25.876314,25.854001,24.786204,24.347514,24.741512,24.66305,24.922275,25.200037,25.174126,25.127245,25.47,25.6642,25.886656,26.02235,24.812154,24.576398,26.070621,27.15593,27.454028,27.632293,27.330104,27.436378,27.857812,27.65,27.52,27.731746,25.961407,25.97,26.171179,26.091795,26.564318,26.686466,26.779506,27.018842,26.871071,26.690051,27.014956,26.948543,25.37997,25.411473,25.482632,25.807458],"ldr":[89.103699,89.21162,90.192589,90.432386,91.990853,92.762196,93.112703,93.78661,94.085661,93.712229,93.193256,94.783806,93.973247,94.120792,93.995256,94.254042,96.18617,94.978407,94.480204,94.662314,94.33854,93.955069,93.499384,94.433576,93.358226,92.504109,92.551872,92.181951,90.937928,89.095039,88.086222,85.376098,83.455983,83.071199,82.327487,82.538373,82.437872,81.79661,80.92593,80.829995,80.888268,null,null,null,null,78.089971,77.903188,77.125668,77.546284,78.034853,78.368398,79.902513,79.999108,81.249933,81.428589,81.21883,82.05344,79.897525,79.6,78.782023,79.343975,79.804125,80.512068,80.841533,82.134505,82.764636,82.896765,83.378743,83.92236,84.194939,84.782423,83.83,83.87,84.049814,84.228014,84.49,84.79556,85.741509,86.506969,86.795558,86.910214,87.49578,87.339789,88.619926,87.644934,87.671954,87.772373,87.988804,88.156872,86.395074]};
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const f=(x,d=2)=>x.toFixed(d).replace(".",",");
+const L=D.p.length-1,Y=L-12;
+const K=[["NPL gross","npl","batas maks. 5%"],["ROA","roa","profitabilitas"],["CAR","car","minimum 8%"],["LDR","ldr","acuan 84–94% (asumsi)"]];
+const R=[["Pra-COVID","2018-01","2020-02"],["COVID","2020-03","2021-12"],["Pemulihan","2022-01","2025-06"]];
+const inR=(p,r)=>p>=r[1]&&p<=r[2];
+const BL=["Jan","Feb","Mar","Apr","Mei","Jun","Jul","Agu","Sep","Okt","Nov","Des"];
+document.getElementById("kp").innerHTML=K.map(k=>{const a=D[k[1]][L],d=a-D[k[1]][Y];return '<div class="t k"><b>'+k[0]+'</b><span class="v">'+f(a)+'%</span><small>Jun 2025, '+(d>=0?"▲ ":"▼ ")+f(Math.abs(d))+' poin vs 12 bulan lalu</small><small>'+k[2]+'</small></div>'}).join("");
+const avg=(k,r)=>{const v=D[k].filter((x,i)=>x!==null&&inR(D.p[i],r));return f(v.reduce((s,x)=>s+x,0)/v.length)};
+document.getElementById("reg").innerHTML='<tr><th>Indikator</th>'+R.map(r=>'<th>'+r[0]+'</th>').join("")+'</tr>'+K.map(k=>'<tr><td>'+k[0]+' (%)</td>'+R.map(r=>'<td>'+avg(k[1],r)+'</td>').join("")+'</tr>').join("");
+const i0=D.p.indexOf("2020-03"),i1=D.p.indexOf("2021-12"),pk=D.npl.indexOf(Math.max(...D.npl));
+const shade={id:"shade",beforeDatasetsDraw(ch,_,o){const x=ch.scales.x,a=ch.chartArea,c=ch.ctx;c.save();c.fillStyle=css("--cov");const x0=x.getPixelForValue(i0);c.fillRect(x0,a.top,x.getPixelForValue(i1)-x0,a.height);if(o&&o.band){const y=ch.scales[o.band.axis],t=y.getPixelForValue(o.band.hi);c.fillStyle=css("--band");c.fillRect(a.left,t,a.width,y.getPixelForValue(o.band.lo)-t)}c.restore()},
+afterDatasetsDraw(ch,_,o){if(!o||!o.peak)return;const x=ch.scales.x.getPixelForValue(pk),y=ch.scales.y.getPixelForValue(D.npl[pk]),c=ch.ctx;c.save();c.fillStyle=css("--bad");c.beginPath();c.arc(x,y,4,0,7);c.fill();c.fillStyle=css("--tx");c.font="600 11px "+Chart.defaults.font.family;c.textAlign="center";c.fillText("Puncak "+f(D.npl[pk])+"% ("+BL[+D.p[pk].slice(5)-1]+" "+D.p[pk].slice(0,4)+")",x,y-10);c.restore()}};
+let charts=[];
+function build(){
+charts.forEach(c=>c.destroy());charts=[];
+Chart.defaults.color=css("--mut");Chart.defaults.font.size=11;Chart.defaults.font.family='"Segoe UI",system-ui,sans-serif';
+const c1=css("--c1"),c2=css("--c2"),c3=css("--c3"),bad=css("--bad"),gl=css("--line"),nar=innerWidth<600;
+const tip={callbacks:{label:c=>c.dataset.label+": "+f(c.parsed.y)+"%"}};
+const xs={grid:{display:false},ticks:{autoSkip:false,maxRotation:0,callback:function(v){const p=this.getLabelForValue(v);return p.endsWith("-01")&&(!nar||+p.slice(0,4)%2===0)?p.slice(0,4):""}}};
+const ys=o=>Object.assign({grid:{color:gl},ticks:{callback:v=>v+"%"}},o);
+const line=(id,sets,y,plug)=>charts.push(new Chart(document.getElementById(id),{type:"line",data:{labels:D.p,datasets:sets},plugins:[shade],options:{responsive:true,maintainAspectRatio:false,interaction:{mode:"index",intersect:false},elements:{point:{radius:0,hitRadius:8},line:{borderWidth:2}},scales:Object.assign({x:xs},y),plugins:Object.assign({legend:{display:sets.length>1,labels:{boxWidth:12}},tooltip:tip},plug||{})}}));
+line("cNpl",[{label:"NPL gross",data:D.npl,borderColor:c1},{label:"Batas 5%",data:D.p.map(()=>5),borderColor:bad,borderDash:[5,4],borderWidth:1.5}],{y:ys({min:1.5,max:5.5})},{shade:{peak:true}});
+line("cRoa",[{label:"ROA",data:D.roa,borderColor:c1}],{y:ys({min:1,max:3.5})});
+line("cCar",[{label:"CAR (kiri)",data:D.car,borderColor:c1,yAxisID:"y"},{label:"LDR (kanan)",data:D.ldr,borderColor:c2,yAxisID:"y1"}],{y:ys({min:15,max:30}),y1:ys({position:"right",min:70,max:100,grid:{drawOnChartArea:false}})},{shade:{band:{axis:"y1",lo:84,hi:94}}});
+const cols=[c1,bad,c3];
+charts.push(new Chart(document.getElementById("cSc"),{type:"scatter",data:{datasets:R.map((r,j)=>({label:r[0],backgroundColor:cols[j],pointRadius:3,data:D.p.map((p,i)=>({x:D.npl[i],y:D.roa[i]})).filter((d,i)=>d.y!==null&&inR(D.p[i],r))}))},options:{responsive:true,maintainAspectRatio:false,scales:{x:{title:{display:true,text:"NPL (%)"},grid:{color:gl}},y:{title:{display:true,text:"ROA (%)"},grid:{color:gl}}},plugins:{legend:{labels:{boxWidth:12}},tooltip:{callbacks:{label:c=>"NPL "+f(c.parsed.x)+"%, ROA "+f(c.parsed.y)+"%"}}}}}));
+}
+build();
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",build);
+new MutationObserver(build).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+</script></body></html>
